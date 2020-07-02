@@ -1,0 +1,82 @@
+#bgImage {
+	opacity: 0.3;
+    position: fixed;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+body{
+	background: #000000b0;
+}
+h2{
+color: white;
+}
+#content{
+	position: relative;
+	float: left;
+	width: 100%;
+	color: white;
+	margin: auto;
+}
+#footer{
+	position: fixed;
+	left:0;
+	bottom:0;
+	padding: 10px;
+	background: black;
+	color: white;
+	width: 100%;
+}
+#logo{
+	background: black;
+	color: white;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	position: relative;
+}
+#loginDiv , #regDiv{
+	width: 250px;
+    margin: auto;
+}
+#outButton{
+	width: 150px;
+    margin: 20px;
+    float: right;
+}
+#nasUzheP{
+	padding-top: 5px;
+}
+#userListWin{
+	float: right;
+	overflow: auto;
+	height: 450px;
+	width: 100%;
+}
+#userListWin h2{
+	font-size: 14px;
+}
+#userFriendsListWin{
+	float: left;
+	overflow: auto;
+	height: 450px;
+}
+#userFriendsListWin h2{
+	font-size: 14px;
+}
+#leftSideBarWindow{
+    width: 20%;
+    height: 100%;
+    float: left;
+	background-color: #ffffff69;
+}
+
+#centerWindow{
+	width: 50%;
+	float: left;
+}
+#rightSideBarWindow{
+	width: 30%;
+	float: right;
+	background-color: #ffffff69;
+	height: 100%;
+}
