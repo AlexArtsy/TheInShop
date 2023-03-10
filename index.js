@@ -2,16 +2,16 @@
 //import * as render from './render.js';
 
 
-// ============= залогинивание юзера ================================================================================================
-function userWantsToLogIn(login, pass) // вызывается кликом по кнопке "зайти" из функции showLoginWindow
+// ============= Р·Р°Р»РѕРіРёРЅРёРІР°РЅРёРµ СЋР·РµСЂР° ================================================================================================
+function userWantsToLogIn(login, pass) // РІС‹Р·С‹РІР°РµС‚СЃСЏ РєР»РёРєРѕРј РїРѕ РєРЅРѕРїРєРµ "Р·Р°Р№С‚Рё" РёР· С„СѓРЅРєС†РёРё showLoginWindow
 {
-	//alert('проверка: пользователь нажал кнопку зайти');
+	//alert('РїСЂРѕРІРµСЂРєР°: РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅР°Р¶Р°Р» РєРЅРѕРїРєСѓ Р·Р°Р№С‚Рё');
 	if (checkUserLoginInDB(login))
 	{
 		if(checkUserPassword(login,pass)) 
 		{
-			localStorage.setItem('loginnedUser',login); // сохраняем логин текущего пользователя 
-			localStorage.setItem('logOn',true); // устанавливаем статус аккаунта (залогинен)
+			localStorage.setItem('loginnedUser',login); // СЃРѕС…СЂР°РЅСЏРµРј Р»РѕРіРёРЅ С‚РµРєСѓС‰РµРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ 
+			localStorage.setItem('logOn',true); // СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј СЃС‚Р°С‚СѓСЃ Р°РєРєР°СѓРЅС‚Р° (Р·Р°Р»РѕРіРёРЅРµРЅ)
 			userIsLogginned();
 		}
 		else
@@ -19,13 +19,13 @@ function userWantsToLogIn(login, pass) // вызывается кликом по кнопке "зайти" из
 	}
 	else
 	{
-		alert('Проверьте логин!');
+		alert('РџСЂРѕРІРµСЂСЊС‚Рµ Р»РѕРіРёРЅ!');
 	}
 	
 }
-function checkUserLoginInDB(login) // проверка наличия логина в базе (localStorage), вызывается из userWantsToLogIn
+function checkUserLoginInDB(login) // РїСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёСЏ Р»РѕРіРёРЅР° РІ Р±Р°Р·Рµ (localStorage), РІС‹Р·С‹РІР°РµС‚СЃСЏ РёР· userWantsToLogIn
 {	
-	//alert('проверка: проверяем логин в базе');
+	//alert('РїСЂРѕРІРµСЂРєР°: РїСЂРѕРІРµСЂСЏРµРј Р»РѕРіРёРЅ РІ Р±Р°Р·Рµ');
 	var checkUserLogin = localStorage.getItem(login);
 	if(checkUserLogin != null)
 	{ 
@@ -33,18 +33,18 @@ function checkUserLoginInDB(login) // проверка наличия логина в базе (localStora
 	}
 	else{return false;}
 }
-function checkUserPassword(login,pass) // проверка пароля при залогинивании, вызывается из userWantsToLogIn
+function checkUserPassword(login,pass) // РїСЂРѕРІРµСЂРєР° РїР°СЂРѕР»СЏ РїСЂРё Р·Р°Р»РѕРіРёРЅРёРІР°РЅРёРё, РІС‹Р·С‹РІР°РµС‚СЃСЏ РёР· userWantsToLogIn
 {	
-	//alert('проверка: проверяем правильность пароля');
+	//alert('РїСЂРѕРІРµСЂРєР°: РїСЂРѕРІРµСЂСЏРµРј РїСЂР°РІРёР»СЊРЅРѕСЃС‚СЊ РїР°СЂРѕР»СЏ');
 	//var checkPass = localStorage.getItem(login);
 	// var returnObj = JSON.parse(localStorage.getItem('key'))
 	var returnUserData = JSON.parse(localStorage.getItem(login)); 
 	if(returnUserData.pass == pass)
 	{ 
-		alert('Приветствуем Вас в Цехе!');
+		alert('РџСЂРёРІРµС‚СЃС‚РІСѓРµРј Р’Р°СЃ РІ Р¦РµС…Рµ!');
 		return true;		
 	}
-	else{alert('пароль не правильный!'); return false; } 
+	else{alert('РїР°СЂРѕР»СЊ РЅРµ РїСЂР°РІРёР»СЊРЅС‹Р№!'); return false; } 
 }
 function userWantsToLogOut()
 {
@@ -52,55 +52,55 @@ function userWantsToLogOut()
 	localStorage.setItem('loginnedUser',null);
 	userNoLoginned();
 }
-// ============= Регистрация юзера ================================================================================================================================
+// ============= Р РµРіРёСЃС‚СЂР°С†РёСЏ СЋР·РµСЂР° ================================================================================================================================
 function userWantsToReg(login,pass)
 {
 	if(checkUserLoginInDB(login))
 	{
-		alert('Такой логин существует!');
+		alert('РўР°РєРѕР№ Р»РѕРіРёРЅ СЃСѓС‰РµСЃС‚РІСѓРµС‚!');
 	}
 	else
 	{
-		savwNewUserID(login); // увеличиваем счетчик новых пользователей
+		savwNewUserID(login); // СѓРІРµР»РёС‡РёРІР°РµРј СЃС‡РµС‚С‡РёРє РЅРѕРІС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
 		saveNewUserInDB(login,pass);
 		userWantsToLogIn(login,pass);
 	}
 }
-function saveNewUserInDB(login,password,i) // сохранение нового пользователя в базу (localStorage) 
+function saveNewUserInDB(login,password,i) // СЃРѕС…СЂР°РЅРµРЅРёРµ РЅРѕРІРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РІ Р±Р°Р·Сѓ (localStorage) 
 {
 	var userDataToDB = {
 		name: login,
-		id: localStorage.getItem('userCount'), // присваиваем юзеру порядковый номер 
-		pass: password, // пароль
-		gen: '-', // пол
-		frNum: 0, // число друзей
-		frArr: new Array(), // список id добавленных друзей 
-		incoFrRecArr: new Array(), // массив входящих запросов на добавление в друзья 
-		outgFrRecArr: new Array(), // массив исходящих запросов на добавление в друзья
-		st: '-', //должность в цехе
-		mess: {     // массив обьектов содержащих массив сообщений
+		id: localStorage.getItem('userCount'), // РїСЂРёСЃРІР°РёРІР°РµРј СЋР·РµСЂСѓ РїРѕСЂСЏРґРєРѕРІС‹Р№ РЅРѕРјРµСЂ 
+		pass: password, // РїР°СЂРѕР»СЊ
+		gen: '-', // РїРѕР»
+		frNum: 0, // С‡РёСЃР»Рѕ РґСЂСѓР·РµР№
+		frArr: new Array(), // СЃРїРёСЃРѕРє id РґРѕР±Р°РІР»РµРЅРЅС‹С… РґСЂСѓР·РµР№ 
+		incoFrRecArr: new Array(), // РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… Р·Р°РїСЂРѕСЃРѕРІ РЅР° РґРѕР±Р°РІР»РµРЅРёРµ РІ РґСЂСѓР·СЊСЏ 
+		outgFrRecArr: new Array(), // РјР°СЃСЃРёРІ РёСЃС…РѕРґСЏС‰РёС… Р·Р°РїСЂРѕСЃРѕРІ РЅР° РґРѕР±Р°РІР»РµРЅРёРµ РІ РґСЂСѓР·СЊСЏ
+		st: '-', //РґРѕР»Р¶РЅРѕСЃС‚СЊ РІ С†РµС…Рµ
+		mess: {     // РјР°СЃСЃРёРІ РѕР±СЊРµРєС‚РѕРІ СЃРѕРґРµСЂР¶Р°С‰РёС… РјР°СЃСЃРёРІ СЃРѕРѕР±С‰РµРЅРёР№
 			incom: new Array(),
 			outg: new Array(),
 		},
 	};
 	var userDataConvertToString = JSON.stringify(userDataToDB);
-	//alert('проверка'+userDataConvertToString);
-	localStorage.setItem(login,userDataConvertToString); //записали в localStorage инфу юзера по ключу его логина
+	//alert('РїСЂРѕРІРµСЂРєР°'+userDataConvertToString);
+	localStorage.setItem(login,userDataConvertToString); //Р·Р°РїРёСЃР°Р»Рё РІ localStorage РёРЅС„Сѓ СЋР·РµСЂР° РїРѕ РєР»СЋС‡Сѓ РµРіРѕ Р»РѕРіРёРЅР°
 }
-function savwNewUserID(login) // инкрементирует счетчик зарегистрированнх пользователей, ключ - userCount
+function savwNewUserID(login) // РёРЅРєСЂРµРјРµРЅС‚РёСЂСѓРµС‚ СЃС‡РµС‚С‡РёРє Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№, РєР»СЋС‡ - userCount
 {	
 	var cnt;
 	if(localStorage.getItem('userCount')== null)
 	{
 		localStorage.setItem('userCount',1);
 		localStorage.setItem(1,login);
-		alert('запись первого юзера');
+		alert('Р·Р°РїРёСЃСЊ РїРµСЂРІРѕРіРѕ СЋР·РµСЂР°');
 	}
 	else
 	{
-		cnt = localStorage.getItem('userCount'); // получаем число уже зареганных пользователей
+		cnt = localStorage.getItem('userCount'); // РїРѕР»СѓС‡Р°РµРј С‡РёСЃР»Рѕ СѓР¶Рµ Р·Р°СЂРµРіР°РЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
 		cnt++; 
-		localStorage.setItem('userCount',cnt); // записываем новое число пользователей
+		localStorage.setItem('userCount',cnt); // Р·Р°РїРёСЃС‹РІР°РµРј РЅРѕРІРѕРµ С‡РёСЃР»Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
 		localStorage.setItem(cnt,login);
 	} 
 	
@@ -112,7 +112,7 @@ function showOutButton(showOrNot)
 	if(showOrNot==true)
 	{	
 		document.getElementById("footer").append(outButton);
-		outButton.insertAdjacentHTML('afterbegin','<div><button onclick="userWantsToLogOut();" >Выйти из Цеха</button></div>');
+		outButton.insertAdjacentHTML('afterbegin','<div><button onclick="userWantsToLogOut();" >Р’С‹Р№С‚Рё РёР· Р¦РµС…Р°</button></div>');
 	}
 	else{outButton.remove();}
 }
@@ -121,7 +121,7 @@ function showRegistrationButton(showOrNot)
 	if(showOrNot==true)
 	{	
 		document.getElementById("loginDiv").append(registrationButton);
-		registrationButton.insertAdjacentHTML('afterbegin','<div><button style="float: right;" onclick="showRegistrationWindow(true);" >Зарегистрироваться</button></div>');
+		registrationButton.insertAdjacentHTML('afterbegin','<div><button style="float: right;" onclick="showRegistrationWindow(true);" >Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ</button></div>');
 	}
 	else{registrationButton.remove(); }
 }
@@ -135,7 +135,7 @@ function addFriend(id, func)
 		}
 	}
 	userObjData.frNum = userObjData.frArr.length;
-	// удаляем друга из массива исходящих заявок
+	// СѓРґР°Р»СЏРµРј РґСЂСѓРіР° РёР· РјР°СЃСЃРёРІР° РёСЃС…РѕРґСЏС‰РёС… Р·Р°СЏРІРѕРє
 	for(let i = 0; i <= userObjData.outgFrRecArr.length; i++ ){
 		if(userObjData.outgFrRecArr[i]== id){
 			userObjData.outgFrRecArr.splice(i,1);
@@ -245,43 +245,43 @@ function isUserInFrArr(id){
 }
 
 
-function getUserDataFromString() // получаем данные пользователя из строки по ключу логина
+function getUserDataFromString() // РїРѕР»СѓС‡Р°РµРј РґР°РЅРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РёР· СЃС‚СЂРѕРєРё РїРѕ РєР»СЋС‡Сѓ Р»РѕРіРёРЅР°
 {
 	var login = localStorage.getItem('loginnedUser');
 	var userData = JSON.parse(localStorage.getItem(login));
-	return (userData); // возвращаем объект
+	return (userData); // РІРѕР·РІСЂР°С‰Р°РµРј РѕР±СЉРµРєС‚
 }
 
-function saveNewUserData(obj) // сохраняем данные пользователя 
+function saveNewUserData(obj) // СЃРѕС…СЂР°РЅСЏРµРј РґР°РЅРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ 
 {
 	var userStringData = JSON.stringify(obj);
 	localStorage.setItem(localStorage.getItem('loginnedUser'),userStringData);
 }
-function getFriendsDataFromString(id) // получаем данные друга из строки по ключу логина
+function getFriendsDataFromString(id) // РїРѕР»СѓС‡Р°РµРј РґР°РЅРЅС‹Рµ РґСЂСѓРіР° РёР· СЃС‚СЂРѕРєРё РїРѕ РєР»СЋС‡Сѓ Р»РѕРіРёРЅР°
 {
 	var login = localStorage.getItem(id);
 	var userData = JSON.parse(localStorage.getItem(login));
-	return (userData); // возвращаем объект
+	return (userData); // РІРѕР·РІСЂР°С‰Р°РµРј РѕР±СЉРµРєС‚
 }
-function saveNewFriendsData(obj,id) // сохраняем данные пользователя 
+function saveNewFriendsData(obj,id) // СЃРѕС…СЂР°РЅСЏРµРј РґР°РЅРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ 
 {
 	var userStringData = JSON.stringify(obj);
 	localStorage.setItem(localStorage.getItem(id),userStringData);
 }
 function userWantsToAddFriend(id,funct)
 {
-	// сохраняем исходящие запросы на добавление  друзья
+	// СЃРѕС…СЂР°РЅСЏРµРј РёСЃС…РѕРґСЏС‰РёРµ Р·Р°РїСЂРѕСЃС‹ РЅР° РґРѕР±Р°РІР»РµРЅРёРµ  РґСЂСѓР·СЊСЏ
 	
 	var outgFrRecArrLength = userObjData.outgFrRecArr.length;
-	userObjData.outgFrRecArr[outgFrRecArrLength]=id; // запоминаем, кому пользователь отправил запрос на добавление
+	userObjData.outgFrRecArr[outgFrRecArrLength]=id; // Р·Р°РїРѕРјРёРЅР°РµРј, РєРѕРјСѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РѕС‚РїСЂР°РІРёР» Р·Р°РїСЂРѕСЃ РЅР° РґРѕР±Р°РІР»РµРЅРёРµ
 	saveNewUserData(userObjData);
 	
-	// отправляем запрос
+	// РѕС‚РїСЂР°РІР»СЏРµРј Р·Р°РїСЂРѕСЃ
 	var friendsUserData = getFriendsDataFromString(id);
 	var incoFrRecArrLength = friendsUserData.incoFrRecArr.length;
-	friendsUserData.incoFrRecArr[incoFrRecArrLength]= userObjData.id; // записали в массив входящих заявок будущего друга id отправителя
+	friendsUserData.incoFrRecArr[incoFrRecArrLength]= userObjData.id; // Р·Р°РїРёСЃР°Р»Рё РІ РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… Р·Р°СЏРІРѕРє Р±СѓРґСѓС‰РµРіРѕ РґСЂСѓРіР° id РѕС‚РїСЂР°РІРёС‚РµР»СЏ
 	saveNewFriendsData(friendsUserData,id);
-	alert('Заявка отправлена');
+	alert('Р—Р°СЏРІРєР° РѕС‚РїСЂР°РІР»РµРЅР°');
 	funct(true);
 }
 function userWantToEditData(gen,st){
@@ -291,17 +291,17 @@ function userWantToEditData(gen,st){
 	
 	showUserInfoWindow(true);
 }
-// =========== контент ЦЕНТРальной части =================================================================================
+// =========== РєРѕРЅС‚РµРЅС‚ Р¦Р•РќРўР Р°Р»СЊРЅРѕР№ С‡Р°СЃС‚Рё =================================================================================
 function showUserInfoWindow(showOrNot)
 {	userInfoWindow.innerHTML="";
 	if(showOrNot==true)
 	{	centerWindow.innerHTML="";
 		document.getElementById("centerWindow").append(userInfoWindow);
 		
-		userInfoWindow.insertAdjacentHTML('afterbegin','<button onclick="showUserInfoEditWindow(true)" >Редактировать</button></br>');
-		userInfoWindow.insertAdjacentHTML('afterbegin','<div>Должность в цехе: '+userObjData.st+'</div>');
-		userInfoWindow.insertAdjacentHTML('afterbegin','<div>Количество друзей: '+userObjData.frNum+'</div>');
-		userInfoWindow.insertAdjacentHTML('afterbegin','<div> Пол: '+userObjData.gen+'</div>');
+		userInfoWindow.insertAdjacentHTML('afterbegin','<button onclick="showUserInfoEditWindow(true)" >Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</button></br>');
+		userInfoWindow.insertAdjacentHTML('afterbegin','<div>Р”РѕР»Р¶РЅРѕСЃС‚СЊ РІ С†РµС…Рµ: '+userObjData.st+'</div>');
+		userInfoWindow.insertAdjacentHTML('afterbegin','<div>РљРѕР»РёС‡РµСЃС‚РІРѕ РґСЂСѓР·РµР№: '+userObjData.frNum+'</div>');
+		userInfoWindow.insertAdjacentHTML('afterbegin','<div> РџРѕР»: '+userObjData.gen+'</div>');
 		userInfoWindow.insertAdjacentHTML('afterbegin','<h2>'+userObjData.name+'</h2>');
 	}
 	else{userInfoWindow.remove(); }
@@ -313,10 +313,10 @@ userInfoEditWindow.innerHTML="";
 	{	centerWindow.innerHTML="";
 		document.getElementById("centerWindow").append(userInfoEditWindow);
 		
-		userInfoEditWindow.insertAdjacentHTML('afterbegin','<button onclick="userWantToEditData(editGen.value,editSt.value)" >Сохранить</button></br>');
-		userInfoEditWindow.insertAdjacentHTML('afterbegin','<div>Должность в цехе: '+userObjData.st+'</div><input type ="text" style="width: 200px; height: 20px;" id="editSt" placeholder=""></input> ');
-		userInfoEditWindow.insertAdjacentHTML('afterbegin','<div>Количество друзей: '+userObjData.frNum+'</div> ');
-		userInfoEditWindow.insertAdjacentHTML('afterbegin','<div> Пол: '+userObjData.gen+'</div><input type ="text" style="width: 200px; height: 20px;" id="editGen" placeholder=""></input>');
+		userInfoEditWindow.insertAdjacentHTML('afterbegin','<button onclick="userWantToEditData(editGen.value,editSt.value)" >РЎРѕС…СЂР°РЅРёС‚СЊ</button></br>');
+		userInfoEditWindow.insertAdjacentHTML('afterbegin','<div>Р”РѕР»Р¶РЅРѕСЃС‚СЊ РІ С†РµС…Рµ: '+userObjData.st+'</div><input type ="text" style="width: 200px; height: 20px;" id="editSt" placeholder=""></input> ');
+		userInfoEditWindow.insertAdjacentHTML('afterbegin','<div>РљРѕР»РёС‡РµСЃС‚РІРѕ РґСЂСѓР·РµР№: '+userObjData.frNum+'</div> ');
+		userInfoEditWindow.insertAdjacentHTML('afterbegin','<div> РџРѕР»: '+userObjData.gen+'</div><input type ="text" style="width: 200px; height: 20px;" id="editGen" placeholder=""></input>');
 		userInfoEditWindow.insertAdjacentHTML('afterbegin','<h2>'+userObjData.name+'</h2>');
 	}
 	else{userInfoEditWindow.remove(); }
@@ -329,13 +329,13 @@ function showFriendsRequestWindow(showOrNot)
 		centerWindow.innerHTML="";
 		document.getElementById("centerWindow").prepend(friendsRequestWindow);
 		var userData = getUserDataFromString();
-		friendsRequestWindow.insertAdjacentHTML('afterbegin','<h2> Заявки в друзья</h2>');
+		friendsRequestWindow.insertAdjacentHTML('afterbegin','<h2> Р—Р°СЏРІРєРё РІ РґСЂСѓР·СЊСЏ</h2>');
 		for(let i=0;i<userData.incoFrRecArr.length; i++)
 		{
-			//alert('проверка i '+i+' проверка ид '+userData.incoFrRecArr[i]);
+			//alert('РїСЂРѕРІРµСЂРєР° i '+i+' РїСЂРѕРІРµСЂРєР° РёРґ '+userData.incoFrRecArr[i]);
 			var friendsLogin = localStorage.getItem(userData.incoFrRecArr[i]); // localStorage.getItem('userCount'),
 			let htmlObj = 'frReqDiv'+i;
-			friendsRequestWindow.insertAdjacentHTML('beforeend','<div id="'+htmlObj+'">'+friendsLogin+'<button onclick="addFriend('+userData.incoFrRecArr[i]+',showFriendsRequestWindow)" >добавить</button><button onclick="rejectFriend('+userData.incoFrRecArr[i]+',showFriendsRequestWindow)" >отклонить</button></div>');
+			friendsRequestWindow.insertAdjacentHTML('beforeend','<div id="'+htmlObj+'">'+friendsLogin+'<button onclick="addFriend('+userData.incoFrRecArr[i]+',showFriendsRequestWindow)" >РґРѕР±Р°РІРёС‚СЊ</button><button onclick="rejectFriend('+userData.incoFrRecArr[i]+',showFriendsRequestWindow)" >РѕС‚РєР»РѕРЅРёС‚СЊ</button></div>');
 		}
 		
 		
@@ -346,11 +346,11 @@ function showUserList(showOrNot)
 {
 	userListWindow.innerHTML="";
 	if(showOrNot==true)
-	{	//myElm.render('<div>Тут что-от есть!!!</div>');
+	{	//myElm.render('<div>РўСѓС‚ С‡С‚Рѕ-РѕС‚ РµСЃС‚СЊ!!!</div>');
 		
 		centerWindow.innerHTML="";
 		document.getElementById("centerWindow").prepend(userListWindow);
-		userListWindow.innerHTML='<h2>Список всех пользователей</h2>';
+		userListWindow.innerHTML='<h2>РЎРїРёСЃРѕРє РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№</h2>';
 		for(let i=1;i<= localStorage.getItem('userCount');i++)
 		{
 			userListWindow.insertAdjacentHTML('beforeend','<div id="fr'+i+'">'+showPlusButton(i)+localStorage.getItem(i)+isYou(i)+showAddOrNotButton(i)+showRequestInfo(i)+'</div>');
@@ -361,7 +361,7 @@ function showUserList(showOrNot)
 	function isYou(id){
 		if(itsYou(id))
 		{
-			return (' (это Вы)');
+			return (' (СЌС‚Рѕ Р’С‹)');
 		}
 		else {
 		 return(' ');
@@ -370,7 +370,7 @@ function showUserList(showOrNot)
 	function showRequestInfo(i){ //isUserInOutgFrRecArr
 		if(isUserInOutgFrRecArr(i))
 		{
-			return (' (Заявка отправлена)');
+			return (' (Р—Р°СЏРІРєР° РѕС‚РїСЂР°РІР»РµРЅР°)');
 		}
 		else {
 		 return(' ');
@@ -388,8 +388,8 @@ function showUserList(showOrNot)
 	function showAddOrNotButton(id){
 		if(isUserInincoFrRecArr(id)){
 			let thisHTMLObjId = 'addButton'+id;
-			return(`<div id="`+thisHTMLObjId+`"><button onclick="addFriend(`+id+`,`+thisHTMLObjId+`)" >добавить</button>
-			<button onclick="rejectFriend(`+id+`,`+thisHTMLObjId+`)" >отклонить</button></div>`);
+			return(`<div id="`+thisHTMLObjId+`"><button onclick="addFriend(`+id+`,`+thisHTMLObjId+`)" >РґРѕР±Р°РІРёС‚СЊ</button>
+			<button onclick="rejectFriend(`+id+`,`+thisHTMLObjId+`)" >РѕС‚РєР»РѕРЅРёС‚СЊ</button></div>`);
 		}
 		else{
 			return (' ');
@@ -404,11 +404,11 @@ function showUserFriendsList(showOrNot)
 		document.getElementById("centerWindow").prepend(userFriendsListWindow);
 		userFriendsListWindow.id="userFriendsListWin";
 		let friend;
-		userFriendsListWindow.innerHTML='<h2>Список друзей: </h2>';
+		userFriendsListWindow.innerHTML='<h2>РЎРїРёСЃРѕРє РґСЂСѓР·РµР№: </h2>';
 		for(let i=0;i< userObjData.frArr.length;i++)
 		{		
 			friend = localStorage.getItem(userObjData.frArr[i]);
-			userFriendsListWindow.insertAdjacentHTML('beforeend','<div>'+friend+'<button onclick="deletFriend('+userObjData.frArr[i]+',showUserFriendsList)" >удалить</button></div>');
+			userFriendsListWindow.insertAdjacentHTML('beforeend','<div>'+friend+'<button onclick="deletFriend('+userObjData.frArr[i]+',showUserFriendsList)" >СѓРґР°Р»РёС‚СЊ</button></div>');
 		}
 	
 	}
@@ -422,12 +422,12 @@ function showOutgoingRequestToFriendList(showOrNot)
 		
 		document.getElementById("centerWindow").prepend(outgoingRequestToFriendsWindow);
 		let friend;
-		outgoingRequestToFriendsWindow.innerHTML='<h2>Исходщие заявки: </h2>';
+		outgoingRequestToFriendsWindow.innerHTML='<h2>РСЃС…РѕРґС‰РёРµ Р·Р°СЏРІРєРё: </h2>';
 		
 		for(let i=0;i< userObjData.outgFrRecArr.length;i++)
 		{		
 			friend = localStorage.getItem(userObjData.outgFrRecArr[i]);
-			outgoingRequestToFriendsWindow.insertAdjacentHTML('beforeend','<div>'+friend+'<button onclick="rejectRequestToFriend('+userObjData.outgFrRecArr[i]+',showOutgoingRequestToFriendList)" >отменить</button></div>');
+			outgoingRequestToFriendsWindow.insertAdjacentHTML('beforeend','<div>'+friend+'<button onclick="rejectRequestToFriend('+userObjData.outgFrRecArr[i]+',showOutgoingRequestToFriendList)" >РѕС‚РјРµРЅРёС‚СЊ</button></div>');
 		}
 	
 	}
@@ -440,13 +440,13 @@ function showUserSideBarWindow(showOrNot)
 	if(showOrNot==true)
 	{	leftSideBarWindow.innerHTML="";
 		document.getElementById("leftSideBarWindow").prepend(userSideBarWindow);
-		userSideBarWindow.insertAdjacentHTML('afterbegin','<button onclick="showUserInfoWindow(true)" >Инфо пользователя</button></br>');
-		userSideBarWindow.insertAdjacentHTML('afterbegin','<button onclick="showUserFriendsList(true)" >Мои друзья</button></br>');
-		userSideBarWindow.insertAdjacentHTML('afterbegin','<button onclick="showUserList(true)" >Найти друга</button></br>');
-		userSideBarWindow.insertAdjacentHTML('afterbegin','<button onclick="showOutgoingRequestToFriendList(true)" >Исходящие заявки</button></br>');
+		userSideBarWindow.insertAdjacentHTML('afterbegin','<button onclick="showUserInfoWindow(true)" >РРЅС„Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ</button></br>');
+		userSideBarWindow.insertAdjacentHTML('afterbegin','<button onclick="showUserFriendsList(true)" >РњРѕРё РґСЂСѓР·СЊСЏ</button></br>');
+		userSideBarWindow.insertAdjacentHTML('afterbegin','<button onclick="showUserList(true)" >РќР°Р№С‚Рё РґСЂСѓРіР°</button></br>');
+		userSideBarWindow.insertAdjacentHTML('afterbegin','<button onclick="showOutgoingRequestToFriendList(true)" >РСЃС…РѕРґСЏС‰РёРµ Р·Р°СЏРІРєРё</button></br>');
 		if (userObjData.incoFrRecArr.length != 0)
 		{	
-			userSideBarWindow.insertAdjacentHTML('afterbegin','<button onclick="showFriendsRequestWindow(true);" >Заявки в друзья</button>');
+			userSideBarWindow.insertAdjacentHTML('afterbegin','<button onclick="showFriendsRequestWindow(true);" >Р—Р°СЏРІРєРё РІ РґСЂСѓР·СЊСЏ</button>');
 		}
 	}
 	else
@@ -461,7 +461,7 @@ function showLoginWindow(showOrNot)
 	if(showOrNot==true)
 	{	
 		document.getElementById("content").append(loginWindow);
-		loginWindow.insertAdjacentHTML('afterbegin','<div id="loginDiv"><h2>Зайти в учетную запись</h2><input type ="text" style="width: 200px; height: 20px;" id="loginCheck" placeholder="введите логин"></input></br><input type ="text" style="width: 200px; height: 20px;" id="passCheck" placeholder="введите пароль"></input></br><button onclick="userWantsToLogIn(loginCheck.value, passCheck.value);" >Зайти</button></div>');
+		loginWindow.insertAdjacentHTML('afterbegin','<div id="loginDiv"><h2>Р—Р°Р№С‚Рё РІ СѓС‡РµС‚РЅСѓСЋ Р·Р°РїРёСЃСЊ</h2><input type ="text" style="width: 200px; height: 20px;" id="loginCheck" placeholder="РІРІРµРґРёС‚Рµ Р»РѕРіРёРЅ"></input></br><input type ="text" style="width: 200px; height: 20px;" id="passCheck" placeholder="РІРІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ"></input></br><button onclick="userWantsToLogIn(loginCheck.value, passCheck.value);" >Р—Р°Р№С‚Рё</button></div>');
 	}
 	else
 	{  
@@ -474,7 +474,7 @@ function showRegistrationWindow(showOrNot)
 	if(showOrNot==true)
 	{	
 		document.getElementById("loginDiv").replaceWith(registrationWindow);
-		registrationWindow.insertAdjacentHTML('afterbegin','<div id="regDiv"><h2>Создайте учетную запись</h2><input type ="text" style="width: 200px; height: 20px;" id="loginCheck" placeholder="введите логин"></input></br><input type ="text" style="width: 200px; height: 20px;" id="passCheck" placeholder="введите пароль"></input></br><button onclick="userWantsToReg(loginCheck.value, passCheck.value);" >Зарегистрировать</button></br><button onclick="userNoLoginned();" >У меня уже есть аккаунт</button></div>');
+		registrationWindow.insertAdjacentHTML('afterbegin','<div id="regDiv"><h2>РЎРѕР·РґР°Р№С‚Рµ СѓС‡РµС‚РЅСѓСЋ Р·Р°РїРёСЃСЊ</h2><input type ="text" style="width: 200px; height: 20px;" id="loginCheck" placeholder="РІРІРµРґРёС‚Рµ Р»РѕРіРёРЅ"></input></br><input type ="text" style="width: 200px; height: 20px;" id="passCheck" placeholder="РІРІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ"></input></br><button onclick="userWantsToReg(loginCheck.value, passCheck.value);" >Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊ</button></br><button onclick="userNoLoginned();" >РЈ РјРµРЅСЏ СѓР¶Рµ РµСЃС‚СЊ Р°РєРєР°СѓРЅС‚</button></div>');
 	}
 	else
 	{  
@@ -489,7 +489,7 @@ function MyComponentHTML(id, type){
 	
 	this.render = function (htmlText){
 		this.innerHTML = "";
-		//alert('отображаем компонент');
+		//alert('РѕС‚РѕР±СЂР°Р¶Р°РµРј РєРѕРјРїРѕРЅРµРЅС‚');
 		
 		this.elm.id = id;
 		document.getElementById("content").append(this.elm);
@@ -497,14 +497,14 @@ function MyComponentHTML(id, type){
 	}
 	this.hide = function (){
 		this.elm.remove();
-		//alert('скрыть компонент');
+		//alert('СЃРєСЂС‹С‚СЊ РєРѕРјРїРѕРЅРµРЅС‚');
 	}
 
 }
 // ================================================================================================
-function userIsLogginned() // отрисока контента если юзер залогинен
+function userIsLogginned() // РѕС‚СЂРёСЃРѕРєР° РєРѕРЅС‚РµРЅС‚Р° РµСЃР»Рё СЋР·РµСЂ Р·Р°Р»РѕРіРёРЅРµРЅ
 {
-	document.getElementById("nasUzheP").innerHTML = "В цехе сидит: " + localStorage.getItem('userCount') +" человек";
+	document.getElementById("nasUzheP").innerHTML = "Р’ С†РµС…Рµ СЃРёРґРёС‚: " + localStorage.getItem('userCount') +" С‡РµР»РѕРІРµРє";
 	userObjData = getUserDataFromString();
 	document.getElementById("content").prepend(rightSideBarWindow);
 	document.getElementById("content").prepend(centerWindow);
@@ -524,9 +524,9 @@ function userIsLogginned() // отрисока контента если юзер залогинен
 	//showUserFriendsList(true);
 	
 }
-function userNoLoginned() // отрисовка контента, если пользователь не залогинен
+function userNoLoginned() // РѕС‚СЂРёСЃРѕРІРєР° РєРѕРЅС‚РµРЅС‚Р°, РµСЃР»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ Р·Р°Р»РѕРіРёРЅРµРЅ
 {
-	document.getElementById("nasUzheP").innerHTML = "В цехе сидит: " + localStorage.getItem('userCount') +" человек";
+	document.getElementById("nasUzheP").innerHTML = "Р’ С†РµС…Рµ СЃРёРґРёС‚: " + localStorage.getItem('userCount') +" С‡РµР»РѕРІРµРє";
 	rightSideBarWindow.remove();
 	centerWindow.remove();
 	leftSideBarWindow.remove();
@@ -541,24 +541,24 @@ function userNoLoginned() // отрисовка контента, если пользователь не залогинен
 }
 //====================================================================================
 /* 
-	Список ключей:
-	userCount - счетчик пользователей он же ID пользователя
-	*login* - логины пользователей, к ним привязывается вся информация о пользователе
-	loginnedUser - содержит логин залогиненного в данный момент пользователя
-	logOn - содержит состояние аккаунта: true - пользователь залогинен, false - никто не залогинен
+	РЎРїРёСЃРѕРє РєР»СЋС‡РµР№:
+	userCount - СЃС‡РµС‚С‡РёРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РѕРЅ Р¶Рµ ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	*login* - Р»РѕРіРёРЅС‹ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№, Рє РЅРёРј РїСЂРёРІСЏР·С‹РІР°РµС‚СЃСЏ РІСЃСЏ РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ
+	loginnedUser - СЃРѕРґРµСЂР¶РёС‚ Р»РѕРіРёРЅ Р·Р°Р»РѕРіРёРЅРµРЅРЅРѕРіРѕ РІ РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	logOn - СЃРѕРґРµСЂР¶РёС‚ СЃРѕСЃС‚РѕСЏРЅРёРµ Р°РєРєР°СѓРЅС‚Р°: true - РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°Р»РѕРіРёРЅРµРЅ, false - РЅРёРєС‚Рѕ РЅРµ Р·Р°Р»РѕРіРёРЅРµРЅ
 	
 	
 */
 
 
-// объявление html - элементов для последующей динамической вставки и удаления
-let userObjData; // записываем при загрузке страницы данные пользователя
+// РѕР±СЉСЏРІР»РµРЅРёРµ html - СЌР»РµРјРµРЅС‚РѕРІ РґР»СЏ РїРѕСЃР»РµРґСѓСЋС‰РµР№ РґРёРЅР°РјРёС‡РµСЃРєРѕР№ РІСЃС‚Р°РІРєРё Рё СѓРґР°Р»РµРЅРёСЏ
+let userObjData; // Р·Р°РїРёСЃС‹РІР°РµРј РїСЂРё Р·Р°РіСЂСѓР·РєРµ СЃС‚СЂР°РЅРёС†С‹ РґР°РЅРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 var loginWindow = document.createElement('div');  loginWindow.id="loginWindow";
 var outButton = document.createElement('div'); outButton.id="outButton";
 var userInfoWindow = document.createElement('div'); userInfoWindow.id = "userInfoWindow";
 var registrationButton = document.createElement('div');
 var registrationWindow = document.createElement('div');
-var userListWindow = document.createElement('div'); // общий список пользователей 
+var userListWindow = document.createElement('div'); // РѕР±С‰РёР№ СЃРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ 
 var userFriendsListWindow = document.createElement('div'); 
 var userSideBarWindow = document.createElement('div'); userSideBarWindow.id = "userSideBarWindow";
 var centerWindow = document.createElement('div'); centerWindow.id = "centerWindow";
@@ -568,7 +568,7 @@ var friendsRequestWindow = document.createElement('div'); friendsRequestWindow.i
 var outgoingRequestToFriendsWindow = document.createElement('div'); outgoingRequestToFriendsWindow.id = "outgoingRequestToFriendsWindow"; 
 var userInfoEditWindow = document.createElement('div'); userInfoEditWindow.id = "userInfoEditWindow"; 
 
-// стартовая логика
+// СЃС‚Р°СЂС‚РѕРІР°СЏ Р»РѕРіРёРєР°
 if(localStorage.getItem('logOn')== 'true')
 {
 	userIsLogginned();
