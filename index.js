@@ -461,7 +461,7 @@ function showLoginWindow(showOrNot)
 	if(showOrNot==true)
 	{	
 		document.getElementById("content").append(loginWindow);
-		loginWindow.insertAdjacentHTML('afterbegin','<div id="loginDiv"><h2>Зайти в учетную запись</h2><input type ="text" style="width: 200px; height: 20px;" id="loginCheck" placeholder="введите логин"></input></br><input type ="text" style="width: 200px; height: 20px;" id="passCheck" placeholder="введите пароль"></input></br><button onclick="userWantsToLogIn(loginCheck.value, passCheck.value);" >Зайти</button></div>');
+		loginWindow.insertAdjacentHTML('afterbegin','<div id="loginDiv"><h2>Зайти в учетную запись</h2><input required type ="text" style="width: 200px; height: 20px;" id="loginCheck" placeholder="введите логин"></input></br><input required type ="text" style="width: 200px; height: 20px;" id="passCheck" placeholder="введите пароль"></input></br><button onclick="userWantsToLogIn(loginCheck.value, passCheck.value);" >Зайти</button></div>');
 	}
 	else
 	{  
@@ -474,7 +474,7 @@ function showRegistrationWindow(showOrNot)
 	if(showOrNot==true)
 	{	
 		document.getElementById("loginDiv").replaceWith(registrationWindow);
-		registrationWindow.insertAdjacentHTML('afterbegin','<div id="regDiv"><h2>Создайте учетную запись</h2><input type ="text" style="width: 200px; height: 20px;" id="loginCheck" placeholder="введите логин"></input></br><input type ="text" style="width: 200px; height: 20px;" id="passCheck" placeholder="введите пароль"></input></br><button onclick="userWantsToReg(loginCheck.value, passCheck.value);" >Зарегистрировать</button></br><button onclick="userNoLoginned();" >У меня уже есть аккаунт</button></div>');
+		registrationWindow.insertAdjacentHTML('afterbegin','<div id="regDiv"><h2>Создайте учетную запись</h2><input required type ="text" style="width: 200px; height: 20px;" id="loginCheck" placeholder="введите логин"></input></br><input required type ="text" style="width: 200px; height: 20px;" id="passCheck" placeholder="введите пароль"></input></br><button onclick="userWantsToReg(loginCheck.value, passCheck.value);" >Зарегистрировать</button></br><button onclick="userNoLoginned();" >У меня уже есть аккаунт</button></div>');
 	}
 	else
 	{  
